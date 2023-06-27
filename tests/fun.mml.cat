@@ -1,0 +1,4 @@
+
+
+((let f = fun (x: int) -> fun (y: int) -> (x + y) in
+ (let g = (f 3) in (g 1))) + (g 4))

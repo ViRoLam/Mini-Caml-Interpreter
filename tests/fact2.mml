@@ -1,0 +1,9 @@
+type intref = { mutable value: int; }
+
+let r = { value = 1; } in
+let rec fact (n:int) : unit =
+  if 1 < n then 
+    (r.value <- r.value * n; fact (n-1))
+in
+fact 6;
+r.value

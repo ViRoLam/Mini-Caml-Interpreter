@@ -1,0 +1,19 @@
+type intref = { mutable value: int; }
+type sequence = { start: int; next: int -> int; stop: int -> bool; }
+
+let max_value (s:sequence) =
+  let max = { value = s.start; } in
+  let rec iter (n:int): unit =
+    if max.value < n then max.value <- n;
+    if not (s.stop n) then iter (s.next n)
+  in
+  iter s.start;
+  max.value
+in
+let syracuse (n:int) = {
+    start = n;
+    next = (fun (k:int) -> if k mod 2 == 0 then k/2 else 3*k+1);
+    stop = (fun (k:int) -> k <= 1);
+  }
+in
+max_value (syracuse 27)

@@ -1,0 +1,7 @@
+type t = { mutable a: int; }
+
+let t = { a = 3; } in
+while t.a < 8 do
+  t.a <- t.a + 1
+done ;
+t.a + 3

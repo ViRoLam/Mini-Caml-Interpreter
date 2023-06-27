@@ -1,0 +1,12 @@
+### Starting build.
+Backtrace:
+                      - Failed to build the target mmlcat.native
+                          - Building mmlcat.native:
+                              - Building mmlcat.cmx:
+                                  - Failed to build all of these:
+                                      - Building mmlcat.ml:
+                                          - Failed to build all of these:
+                                              - Building mmlcat.mly
+                                              - Building mmlcat.mll
+                                      - Building mmlcat.mlpack
+# Compilation unsuccessful.

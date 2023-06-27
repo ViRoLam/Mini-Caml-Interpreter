@@ -1,0 +1,4 @@
+type t = { mutable a : int ; }
+let t = { a = 0; } in 
+for i = 1 to 10 do t.a <- i done ;
+t.a 

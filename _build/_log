@@ -1,0 +1,121 @@
+### Starting build.
+# Target: mmlcat.ml.depends, tags: { bin_annot, explain, extension:ml, file:mmlcat.ml, ocaml, ocamldep, quiet, traverse, use_menhir }
+ocamldep.opt -modules mmlcat.ml > mmlcat.ml.depends
+# Target: mmllexer.mll, tags: { bin_annot, explain, extension:mll, file:mmllexer.mll, lexer, ocaml, ocamllex, quiet, traverse, use_menhir }
+ocamllex.opt -q mmllexer.mll # cached
+# Target: mmllexer.ml.depends, tags: { bin_annot, explain, extension:ml, file:mmllexer.ml, ocaml, ocamldep, quiet, traverse, use_menhir }
+ocamldep.opt -modules mmllexer.ml > mmllexer.ml.depends # cached
+# Target: mmlparser.mly.depends, tags: { bin_annot, explain, extension:mly, file:mmlparser.mly, infer, menhir_ocamldep, ocaml, ocamldep, quiet, traverse, use_menhir }
+menhir --raw-depend --ocamldep 'ocamldep.opt -modules' mmlparser.mly > mmlparser.mly.depends
+# Target: mml.ml.depends, tags: { bin_annot, explain, extension:ml, file:mml.ml, ocaml, ocamldep, quiet, traverse, use_menhir }
+ocamldep.opt -modules mml.ml > mml.ml.depends # cached
+# Target: mml.cmo, tags: { bin_annot, byte, compile, explain, extension:cmo, extension:ml, file:mml.cmo, file:mml.ml, implem, ocaml, quiet, traverse, use_menhir }
+ocamlc.opt -c -bin-annot -o mml.cmo mml.ml # cached
+# Target: mmlparser.mly, tags: { bin_annot, byte, compile, explain, extension:ml, extension:mly, file:mmlparser.ml, file:mmlparser.mly, infer, menhir, ocaml, parser, quiet, traverse, use_menhir }
+menhir --ocamlc 'ocamlc.opt -bin-annot' --explain --infer mmlparser.mly
+# Target: mmlparser.mli.depends, tags: { bin_annot, explain, extension:mli, file:mmlparser.mli, ocaml, ocamldep, quiet, traverse, use_menhir }
+ocamldep.opt -modules mmlparser.mli > mmlparser.mli.depends # cached
+# Target: mmlparser.cmi, tags: { bin_annot, byte, compile, explain, extension:mli, file:mmlparser.mli, interf, ocaml, quiet, traverse, use_menhir }
+ocamlc.opt -c -bin-annot -o mmlparser.cmi mmlparser.mli # cached
+# Target: mmllexer.cmo, tags: { bin_annot, byte, compile, explain, extension:cmo, extension:ml, file:mmllexer.cmo, file:mmllexer.ml, implem, ocaml, quiet, traverse, use_menhir }
+ocamlc.opt -c -bin-annot -o mmllexer.cmo mmllexer.ml # cached
+# Target: mmlpp.ml.depends, tags: { bin_annot, explain, extension:ml, file:mmlpp.ml, ocaml, ocamldep, quiet, traverse, use_menhir }
+ocamldep.opt -modules mmlpp.ml > mmlpp.ml.depends
+# Target: mmlpp.cmo, tags: { bin_annot, byte, compile, explain, extension:cmo, extension:ml, file:mmlpp.cmo, file:mmlpp.ml, implem, ocaml, quiet, traverse, use_menhir }
+ocamlc.opt -c -bin-annot -o mmlpp.cmo mmlpp.ml
+# Target: mmlcat.cmo, tags: { bin_annot, byte, compile, explain, extension:cmo, extension:ml, file:mmlcat.cmo, file:mmlcat.ml, implem, ocaml, quiet, traverse, use_menhir }
+ocamlc.opt -c -bin-annot -o mmlcat.cmo mmlcat.ml
+# Target: mmlparser.ml.depends, tags: { bin_annot, explain, extension:ml, file:mmlparser.ml, ocaml, ocamldep, quiet, traverse, use_menhir }
+ocamldep.opt -modules mmlparser.ml > mmlparser.ml.depends
+# Target: mml.cmx, tags: { bin_annot, compile, explain, extension:cmx, extension:ml, file:mml.cmx, file:mml.ml, implem, native, ocaml, quiet, traverse, use_menhir }
+ocamlopt.opt -c -bin-annot -o mml.cmx mml.ml # cached
+# Target: mmlparser.cmx, tags: { bin_annot, compile, explain, extension:cmx, extension:ml, file:mmlparser.cmx, file:mmlparser.ml, implem, native, ocaml, quiet, traverse, use_menhir }
+ocamlopt.opt -c -bin-annot -o mmlparser.cmx mmlparser.ml
+# Target: mmllexer.cmx, tags: { bin_annot, compile, explain, extension:cmx, extension:ml, file:mmllexer.cmx, file:mmllexer.ml, implem, native, ocaml, quiet, traverse, use_menhir }
+ocamlopt.opt -c -bin-annot -o mmllexer.cmx mmllexer.ml
+# Target: mmlpp.cmx, tags: { bin_annot, compile, explain, extension:cmx, extension:ml, file:mmlpp.cmx, file:mmlpp.ml, implem, native, ocaml, quiet, traverse, use_menhir }
+ocamlopt.opt -c -bin-annot -o mmlpp.cmx mmlpp.ml
+# Target: mmlcat.cmx, tags: { bin_annot, compile, explain, extension:cmx, extension:ml, file:mmlcat.cmx, file:mmlcat.ml, implem, native, ocaml, quiet, traverse, use_menhir }
+ocamlopt.opt -c -bin-annot -o mmlcat.cmx mmlcat.ml
+# Target: mmlcat.native, tags: { bin_annot, dont_link_with, explain, extension:native, file:mmlcat.native, link, native, ocaml, program, quiet, traverse, use_menhir }
+ocamlopt.opt mml.cmx mmlparser.cmx mmllexer.cmx mmlpp.cmx mmlcat.cmx -o mmlcat.native
++ ocamlopt.opt mml.cmx mmlparser.cmx mmllexer.cmx mmlpp.cmx mmlcat.cmx -o mmlcat.native
+ld: warning: object file (/usr/local/lib/ocaml/std_exit.o) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(camlinternalAtomic.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(camlinternalFormatBasics.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(camlinternalFormat.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(camlinternalLazy.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__arg.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__array.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__atomic.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__buffer.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__bytes.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__char.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__digest.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__filename.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__format.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__hashtbl.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__int32.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__int64.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__int.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__lexing.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__list.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__marshal.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__nativeint.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__obj.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__printexc.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__printf.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__queue.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__random.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__seq.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__stack.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__string.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__sys.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/stdlib.a(stdlib__uchar.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(amd64.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(obj.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(roots_nat.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(ints.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(io.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(memory.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(main.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(domain.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(alloc.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(custom.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(str.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(major_gc.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(array.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(fail_nat.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(startup_aux.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(backtrace.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(signals.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(floats.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(compare.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(intern.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(weak.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(misc.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(finalise.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(freelist.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(signals_nat.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(gc_ctrl.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(hash.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(lexing.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(startup_nat.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(md5.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(memprof.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(unix.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(extern.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(minor_gc.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(callback.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(globroots.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(backtrace_nat.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(sys.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(bigarray.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(compact.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(debugger.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(codefrag.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(printexc.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(parsing.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+ld: warning: object file (/usr/local/lib/ocaml/libasmrun.a(skiplist.n.o)) was built for newer macOS version (11.0) than being linked (10.15.6)
+# Compilation successful.

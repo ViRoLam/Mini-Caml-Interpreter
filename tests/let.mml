@@ -1,0 +1,3 @@
+let x = 3 in
+let y = x + 2 in
+(let x = x + y in x) + x

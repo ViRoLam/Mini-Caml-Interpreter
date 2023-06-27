@@ -1,0 +1,7 @@
+
+
+(let fibonacci =
+fix (fibonacci: (int) -> int) = fun (n: int) -> if (n < 3) then 1 else
+                                                ((fibonacci (n - 1)) + (fibonacci (
+                                                 n - 2))) in
+(fibonacci 3))
