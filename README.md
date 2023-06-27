@@ -6,16 +6,14 @@ Mini-ML consists of a series of type definitions, followed by a single expressio
 
 The project is divided into three parts (for each part we had to change one file):
 
-- Syntax Analysis: This involves implementing a lexer and a parser to create an Abstract Syntax Tree (AST) from the source code. The lexer and parser should remove all ambiguities. 
+- **Syntax Analysis**: This involves implementing a lexer and a parser to create an Abstract Syntax Tree (AST) from the source code. The lexer and parser should remove all ambiguities. (files: mmllexer.mll and mmlparser.mly)
 
-- Type Checking: This involves ensuring that all expressions are coherent and checking if operations are correctly applied. For example, checking if only mutable fields are modified and no two types have common field names.
+- **Type Checking**: This involves ensuring that all expressions are coherent and checking if operations are correctly applied. For example, checking if only mutable fields are modified and no two types have common field names. (file: typechecker.ml)
 
-- Interpretation: This involves evaluating expressions to produce a value and update memory. The memory can contain function closures and data structures and is dynamic.
+- **Interpretation**: This involves evaluating expressions to produce a value and update memory. The memory can contain function closures and data structures and is dynamic. (file: interpreter.ml)
 
 
-The project provides skeleton code for various aspects of the project, including lexer and parser (mmllexer.mll and mmlparser.mly), type checking (typechecker.ml), interpretation (interpreter.ml), and more. The primary task is to complete these files, following the given descriptions.
-
-The project also offers an intermediate program, mmlcat, to test your syntax analysis. It takes a Mini-ML file as input, performs syntax analysis, and outputs a program corresponding to the tree.
+The project also offers an intermediate program, mmlcat, to test the syntax analysis. It takes a Mini-ML file as input, performs syntax analysis, and outputs a program corresponding to the tree.
 
 Once completed, the mmli program will be a complete interpreter for Mini-ML.
 
